@@ -1,0 +1,147 @@
+
+
+@mixin scrollIntoViews{
+    opacity: 1;
+    transform: translate(0em, 0em);
+  }
+  
+  
+  @mixin scrollOutOfViews {
+    opacity: 0;
+    transform: translate(0em, 5em);
+    transition: transform 6s .25s cubic-bezier(0,1,.3,1),
+                opacity .9s .25s ease-out,
+                scale .5s .25s ease-out;
+  
+    will-change: transform, opacity, scale;
+  }
+
+  @mixin slideIntoViews{
+    opacity: 1;
+    transform: translate(0em, 0em);
+  }
+  
+  
+  @mixin slideOutOfViews {
+    opacity: 0;
+    transform: translate(-10em, 0);
+    transition: transform 4s .3s cubic-bezier(0,1,.3,1),
+                opacity .9s .25s ease-out,
+                scale .5s .25s ease-out;
+  
+    will-change: transform, opacity, scale;
+  }
+.webDevProjectHeader
+{
+    background-image: url("../Images/WebDevProjectsHeader.png");
+    background-position: center;
+    width: 100vw;
+    height: 250px;
+    @include scrollOutOfViews();
+}
+.webDevProjectHeader.isVisible{
+    @include scrollIntoViews();
+}
+.websitesHeader{
+    @include scrollOutOfViews();
+}
+.websitesHeader.isVisible{
+    @include scrollIntoViews();
+}
+.websiteCV{
+    @include scrollOutOfViews();
+}
+.websiteCV.isVisible{
+    @include scrollIntoViews();
+}
+.webDevProjectsBod{
+
+    height: 100%;
+    min-height: 1500px;
+ a{
+    color: rgb(0, 0, 0);
+ }
+}
+
+h3{
+    font-size: 1.5em;
+}
+.cv{
+    a{
+         color: crimson;
+         @include scrollOutOfViews();
+     }
+     a{
+        @include scrollIntoViews();
+    }
+ }
+ .cv:hover{
+     a{
+          color: rgb(147, 226, 236);
+          scale: 1.2;
+          cursor: pointer;
+      }
+  }
+
+  .websiteIntro{
+    @include scrollOutOfViews();
+  }
+  .websiteIntro.isVisible{
+    @include scrollIntoViews();
+  }
+
+.previewBox{
+    margin: 3em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    
+}
+.previewBox:hover{
+    scale:1.1;
+}
+
+
+.section1{
+    margin:5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    @include slideOutOfViews();
+}
+.section1.isVisible{
+    @include slideIntoViews();
+}
+
+.MikeFourieTruckPlant{
+background-image: url("../Images/MikeFourieTruckPlantLogo.png");
+width: 300px;
+height: 300px;
+background-size: cover;
+background-position: center;
+}
+
+.WSG{
+    background-image: url("../Images/WSGLogo.png");
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.DarronAir{
+    background-image: url("../Images/DarronAirLogo.png");
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.WassNet{
+    background-image: url("../Images/WassNetLogo.png");
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+    

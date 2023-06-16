@@ -1,23 +1,52 @@
-import logo from './logo.svg';
+import Home from './Components/Home/Home';
 import './App.css';
+import NavBar from './Components/NavBar';
+import Footer from './Components/Footer';
+import WebDevProjects from './Components/WebDevProjects';
+import GameDevProjects from './Components/GameDevProjects';
+import Contact from './Components/Contact';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
+
+  let scroll = window.requestAnimationFrame ;
+
+  
+  function loop(){
+    
+  let elementsToShow = document.querySelectorAll(".showOnScroll");
+    elementsToShow.forEach(function (element){
+      if(isElementInViewport(element)){
+        element.classList.add("isVisible"); 
+      }
+      else if(!isElementInViewport(element)){
+        element.classList.remove("isVisible");
+      }
+    });
+    scroll(loop); 
+  }
+ 
+  
+  function isElementInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+  }
+  loop();
+  scroll(loop);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <NavBar />
+
+    <Routes >
+    <Route path="/" element=<Home/> />
+    <Route path="WebDevProjects" element=<WebDevProjects/> />
+    <Route path="GameDevProjects" element=<GameDevProjects/> />
+    <Route path="Contact" element=<Contact/> />
+    </Routes>
+
+      <Footer />
     </div>
   );
 }
